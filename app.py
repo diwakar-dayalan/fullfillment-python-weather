@@ -52,10 +52,25 @@ def webhook():
 def processRequest(req):
     if req.get("result").get("action") != "yahooWeatherForecast":
         return {}
+    if req.get("result").get("action") = "AssessRisk"
+            parameters1 = req.get("queryResult").get("parameters").get("bank-name")
+            print (parameters1)
+            underwriter_name =  req.get("queryResult").get("parameters").get("bank-name")
+            cost = {'Federal Bank': '6.7%','Andhra Bank': '6.85'}
+            speech = "The interest rate of " + underwriter_name + " is " + str(cost[underwriter_name])
+            print("Response:")
+            print(speech)
+
+            return {
+                        "speech": speech,
+                        "displayText": speech,
+                        "source": "apiai-weather-webhook-sample"
+                    }
+        
     baseurl = "https://query.yahooapis.com/v1/public/yql?"
     yql_query = makeYqlQuery(req)
     if yql_query is None:
-        return {}
+       return {}
     yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
     result = urlopen(yql_url).read()
     data = json.loads(result)
