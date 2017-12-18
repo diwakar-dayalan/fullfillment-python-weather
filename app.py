@@ -53,9 +53,9 @@ def processRequest(req):
     if req.get("result").get("action") != "yahooWeatherForecast":
         return {}
     if req.get("result").get("action") = "AssessRisk"
-            parameters1 = req.get("queryResult").get("parameters").get("bank-name")
-            print (parameters1)
-            underwriter_name =  req.get("queryResult").get("parameters").get("bank-name")
+            result = req.get("result")
+            parameters = result.get("parameters")
+            underwriter_name = parameters.get("bank-name")
             cost = {'Federal Bank': '6.7%','Andhra Bank': '6.85'}
             speech = "The interest rate of " + underwriter_name + " is " + str(cost[underwriter_name])
             print("Response:")
