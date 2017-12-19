@@ -50,6 +50,16 @@ def webhook():
 
 
 def processRequest(req):
+    
+     ##added the below 4 lines only - 12/19
+    if req.get("result").get("action") == "PreviousContext":
+        fico_score = {'Federal Bank':'670','Andhra Bank': '730'}         
+        fico_str = "Your FICO score is" + str(fico_score[bankname])
+        bankname= fico_str
+        res = makeWebhookResult1(fico_str)
+        return res
+        
+    
     if req.get("result").get("action") != "yahooWeatherForecast":
         return {}
    
@@ -69,14 +79,7 @@ def makeYqlQuery(req):
     result = req.get("result")
     parameters = result.get("parameters")
     city = parameters.get("geo-city")
-    bankname = parameters.get("bank-name")
-    ##added the below 4 lines only - 12/19
-    my_previous_action = parameters.get("my-action")
-    print (my_previous_action)
-    if req.get("result").get("action") == "PreviousContext":
-        fico_score = {'Federal Bank':'670','Andhra Bank': '730'}         
-        fico_str = "Your FICO score is" + str(fico_score[bankname])
-        return fico_str
+    bankname = parameters.get("bank-name")   
     #if city is None:
     #    return None
 
