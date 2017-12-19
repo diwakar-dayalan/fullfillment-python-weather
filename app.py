@@ -58,7 +58,7 @@ def processRequest(req):
         city = parameters.get("geo-city")
         bankname = parameters.get("bank-name") 
         fico_score = {'Federal Bank':'670','Andhra Bank': '730'}         
-        fico_str = "FICO score for " + bankname " is "+ str(fico_score[bankname])
+        fico_str = "FICO score for " + bankname + " is " + str(fico_score[bankname])
         bankname = fico_str
         res = makeWebhookResult1(fico_str)
         return res
