@@ -70,6 +70,12 @@ def makeYqlQuery(req):
     parameters = result.get("parameters")
     city = parameters.get("geo-city")
     bankname = parameters.get("bank-name")
+    ##added the below 4 lines only - 12/19
+    my_previous_action = parameters.get("my-action")
+    if my_action == "PreviousContext":
+        fico_score = {'Federal Bank':'670','Andhra Bank': '730'}         
+        str = "Your FICO score is" + fico_score[bankname]
+        return str
     #if city is None:
     #    return None
 
