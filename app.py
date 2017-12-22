@@ -57,7 +57,7 @@ def processRequest(req):
         parameters = result.get("parameters")
         city = parameters.get("geo-city")
         bankname = parameters.get("bank-name") 
-        fico_score = {'Federal Bank':'649','Andhra Bank': '749'}         
+        fico_score = {'Yetive Edmonds':'720','Walter B Allen': '670','Ames Construction':'600'}         
         fico_str = "FICO score for " + bankname + " is " + str(fico_score[bankname])
         bankname = fico_str
         res = makeWebhookResult1(fico_str)
@@ -68,10 +68,37 @@ def processRequest(req):
         parameters = result.get("parameters")
         city = parameters.get("geo-city")
         bankname = parameters.get("bank-name") 
-        credit_score = {'Federal Bank':'549','Andhra Bank': '730'}         
+        credit_score = {'Yetive Edmonds':'715','Walter B Allen': '639','Ames Construction':'500'}         
         credit_str = "Credit Score " + bankname + " is " + str(credit_score[bankname])
         bankname = credit_str
         res = makeWebhookResult1(credit_str)
+        return res
+    
+       if req.get("result").get("action") == "EvalContext":
+        result = req.get("result")
+        parameters = result.get("parameters")
+        city = parameters.get("geo-city")
+        bankname = parameters.get("bank-name") 
+        credit_score = {'Yetive Edmonds':'Good','Walter B Allen': 'Fair','Ames Construction':'Poor'}         
+        credit_str = "Associate " + bankname + " seems to have " + str(credit_score[bankname]) + "Credit"
+        bankname = credit_str
+        res = makeWebhookResult1(credit_str)
+        return res
+    
+       if req.get("result").get("action") == "yahooWeatherForecast":
+        result = req.get("result")
+        parameters = result.get("parameters")
+        city = parameters.get("geo-city")
+        bankname = parameters.get("bank-name") 
+        city_score = {'Yetive Edmonds':'Portsmouth','Walter B Allen': 'Sunnyvale','Ames Construction':'Dover'}  
+        baseurl = "https://query.yahooapis.com/v1/public/yql?"
+        yql_query1 = "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + str(city_score[bankname]) + "')"
+        if yql_query1 is None:
+            return {}
+        yql_url = baseurl + urlencode({'q': yql_query1}) + "&format=json"
+        result = urlopen(yql_url).read()
+        data = json.loads(result)
+        res = makeWebhookResult(data)
         return res
     
     if req.get("result").get("action") != "yahooWeatherForecast":
@@ -142,7 +169,7 @@ def makeWebhookResult(data):
 
 def makeWebhookResult1(bankname):
  
-    speech = "Hola Diwakar responded " + bankname
+    speech =  bankname
 
     print("Response:")
     print(speech)
