@@ -74,7 +74,7 @@ def processRequest(req):
         res = makeWebhookResult1(credit_str)
         return res
     
-       if req.get("result").get("action") == "EvalContext":
+    if req.get("result").get("action") == "EvalContext":
         result = req.get("result")
         parameters = result.get("parameters")
         city = parameters.get("geo-city")
@@ -85,7 +85,7 @@ def processRequest(req):
         res = makeWebhookResult1(credit_str)
         return res
     
-       if req.get("result").get("action") == "yahooWeatherForecast":
+    if req.get("result").get("action") == "yahooWeatherForecast":
         result = req.get("result")
         parameters = result.get("parameters")
         city = parameters.get("geo-city")
