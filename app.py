@@ -94,13 +94,11 @@ def processRequest(req):
         res = makeWebhookResult1(fico_str)
         return res
     
-        if req.get("result").get("action") == "PropRContext":
+    if req.get("result").get("action") == "PropRContext":
         result = req.get("result")
         parameters = result.get("parameters")
         city = parameters.get("geo-city")
         bankname = parameters.get("bank-name") 
-        lat_s = {'India Bazaar':'43.0718 N','Walter B Allen': '37.3688 W','Ames Construction':'32.7767 N'} 
-        lon_s= {'India Bazaar':'70.7626 N','Walter B Allen': '122.0363 W','Ames Construction':'96.7970 W'}   
         earth_s= {'India Bazaar':'0','Walter B Allen': '1593','Ames Construction':'195'}  
         hyd_s= {'India Bazaar':'10','Walter B Allen': '22','Ames Construction':'19'}
         fld_s ={'India Bazaar':'2','Walter B Allen': '11','Ames Construction':'94'}  
