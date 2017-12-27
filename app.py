@@ -65,15 +65,15 @@ def processRequest(req):
         roof_s ={'India Bazaar':'20','Walter B Allen': '15','Ames Construction':'6'}
         hail_s ={'India Bazaar':'20','Walter B Allen': '15','Ames Construction':'6'}
         fire_s ={'India Bazaar':'20','Walter B Allen': '15','Ames Construction':'6'}
-        fico_str = "Property Risk for " + bankname + " is \n" \
-                     + "Latitude   : " + str(lat_s[bankname])"\n" \
-                     + "Longitude   : " + str(lon_s[bankname])"\n" \
-                     + "Roof Age    : " + str(roof_s[bankname])" years \n" \
-                     + "Distance of Property from Firestation   : " + str(fico_score[bankname])" mins \n" \
-                     + "Earth Quake Risk  : " + str(earth_s[bankname])" counts in last 15 years \n" \
-                     + "Flood Risk  : " + str(fld_s[bankname])"\n" \
-                     + "Hail  Risk  : " + str(hail_s[bankname])"\n" \
-                     + "Fire  Risk  : " + str(fire_s[bankname])"\n" 
+        fico_str = "Property Risk for " + bankname + " is " 
+                     + "Latitude   : " + str(lat_s[bankname])
+                     + "Longitude   : " + str(lon_s[bankname])
+                     + "Roof Age    : " + str(roof_s[bankname])" years " 
+                     + "Distance of Property from Firestation   : " + str(fico_score[bankname])" mins " 
+                     + "Earth Quake Risk  : " + str(earth_s[bankname])" counts in last 15 years" 
+                     + "Flood Risk  : " + str(fld_s[bankname]) 
+                     + "Hail  Risk  : " + str(hail_s[bankname])
+                     + "Fire  Risk  : " + str(fire_s[bankname]) 
         bankname = fico_str
         res = makeWebhookResult1(fico_str)
         return res
@@ -86,9 +86,9 @@ def processRequest(req):
         credit_score = {'Yetive Edmonds':'Good','Walter B Allen': 'Fair','Ames Construction':'Poor'} 
         equi_score = {'Yetive Edmonds':'715','Walter B Allen': '639','Ames Construction':'500'} 
         fico_score = {'Yetive Edmonds':'720','Walter B Allen': '670','Ames Construction':'600'}  
-        credit_str = "Credit Risk Assessment for " + bankname + " is \n " \
-                        + "Equifax Score " +str(equi_score[bankname]) +"\n" \
-                        + "FICO    Score " +str(fico_score[bankname]) + "\n"\
+        credit_str = "Credit Risk Assessment for " + bankname + " is " 
+                        + "Equifax Score " +str(equi_score[bankname]) 
+                        + "FICO    Score " +str(fico_score[bankname]) 
                         + "Over all Credit Score " +str(credit_score[bankname]) 
         bankname = credit_str
         res = makeWebhookResult1(credit_str)
