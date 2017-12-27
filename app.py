@@ -57,8 +57,23 @@ def processRequest(req):
         parameters = result.get("parameters")
         city = parameters.get("geo-city")
         bankname = parameters.get("bank-name") 
-        fico_score = {'Yetive Edmonds':'720','Walter B Allen': '670','Ames Construction':'600'}         
-        fico_str = "FICO score for " + bankname + " is " + str(fico_score[bankname])
+        lat_s = {'India Bazaar':'720','Walter B Allen': '670','Ames Construction':'600'} 
+        lon_s= {'India Bazaar':'720','Walter B Allen': '670','Ames Construction':'600'}   
+        earth_s= {'India Bazaar':'720','Walter B Allen': '670','Ames Construction':'600'}  
+        hyd_s= {'India Bazaar':'10','Walter B Allen': '22','Ames Construction':'19'}
+        fld_s ={'India Bazaar':'720','Walter B Allen': '670','Ames Construction':'600'}  
+        roof_s ={'India Bazaar':'20','Walter B Allen': '15','Ames Construction':'6'}
+        hail_s ={'India Bazaar':'20','Walter B Allen': '15','Ames Construction':'6'}
+        fire_s ={'India Bazaar':'20','Walter B Allen': '15','Ames Construction':'6'}
+        fico_str = "Property Risk for " + bankname + " is \n" \
+                     + "Latitude   : " + str(lat_s[bankname])"\n" \
+                     + "Longitude   : " + str(lon_s[bankname])"\n" \
+                     + "Roof Age    : " + str(roof_s[bankname])" years \n" \
+                     + "Distance of Property from Firestation   : " + str(fico_score[bankname])" mins \n" \
+                     + "Earth Quake Risk  : " + str(earth_s[bankname])" counts in last 15 years \n" \
+                     + "Flood Risk  : " + str(fld_s[bankname])"\n" \
+                     + "Hail  Risk  : " + str(hail_s[bankname])"\n" \
+                     + "Fire  Risk  : " + str(fire_s[bankname])"\n" 
         bankname = fico_str
         res = makeWebhookResult1(fico_str)
         return res
@@ -68,8 +83,13 @@ def processRequest(req):
         parameters = result.get("parameters")
         city = parameters.get("geo-city")
         bankname = parameters.get("bank-name") 
-        credit_score = {'Yetive Edmonds':'715','Walter B Allen': '639','Ames Construction':'500'}         
-        credit_str = "Credit Score " + bankname + " is " + str(credit_score[bankname])
+        credit_score = {'Yetive Edmonds':'Good','Walter B Allen': 'Fair','Ames Construction':'Poor'} 
+        equi_score = {'Yetive Edmonds':'715','Walter B Allen': '639','Ames Construction':'500'} 
+        fico_score = {'Yetive Edmonds':'720','Walter B Allen': '670','Ames Construction':'600'}  
+        credit_str = "Credit Risk Assessment for " + bankname + " is \n " \
+                        + "Equifax Score " +str(equi_score[bankname]) +"\n" \
+                        + "FICO    Score " +str(fico_score[bankname]) + "\n"\
+                        + "Over all Credit Score " +str(credit_score[bankname]) 
         bankname = credit_str
         res = makeWebhookResult1(credit_str)
         return res
@@ -153,7 +173,7 @@ def makeWebhookResult(data):
 
     # print(json.dumps(item, indent=4))
 
-    speech = "Hola today the weather in " + location.get('city') + ": " + condition.get('text') + \
+    speech = "Today the weather in " + location.get('city') + ": " + condition.get('text') + \
              ", And the temperature is " + condition.get('temp') + " " + units.get('temperature')
 
     print("Response:")
