@@ -67,7 +67,7 @@ def processRequest(req):
         fire_s ={'India Bazaar':'20','Walter B Allen': '15','Ames Construction':'6'}
         #fico_str = "Property Risk for " + bankname + " is \n" + "Latitude   : " + str(lat_s[bankname]) + "\n"  + "Longitude   : " + str(lon_s[bankname])+ "Roof Age    : " + str(roof_s[bankname])" years " + "Distance of Property from Firestation   : " + str(fico_score[bankname])" mins "+ "Earth Quake Risk  : " + str(earth_s[bankname])" counts in last 15 years" + "Flood Risk  : " + str(fld_s[bankname])+ "Hail  Risk  : " + str(hail_s[bankname]) + "Fire  Risk  : " + str(fire_s[bankname])         
         fico_str = "Property Risk for " + bankname + " is \n" + "Latitude   : " + str(lat_s[bankname]) + "\n"  + "Longitude   : " + str(lon_s[bankname]) + \
-                   "Roof Age    : " + str(roof_s[bankname])+ " years " + " Distance of Property from Firestation   : " + str(fico_score[bankname]) + " mins " + \
+                   "Roof Age    : " + str(roof_s[bankname])+ " years " + " Distance of Property from Firestation   : " + str(fico_score[bankname]) + " mins " 
                    #"Earth Quake Risk  : " + str(earth_s[bankname]) + " counts in last 15 years" + "Flood Risk  : " + str(fld_s[bankname])+ "Snow  Storm  : " + str(hail_s[bankname]) + "Fire  Risk  : " + str(fire_s[bankname])
         bankname = fico_str
         res = makeWebhookResult1(fico_str)
