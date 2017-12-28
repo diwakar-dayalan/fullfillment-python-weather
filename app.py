@@ -73,11 +73,13 @@ def processRequest(req):
         res = makeWebhookResult1(fico_str)
         return res
     
-    if req.get("result").get("action") == "PropContext":
+    if req.get("result").get("action") == "RoofContext":
         result = req.get("result")
         parameters = result.get("parameters")
         city = parameters.get("geo-city")
         bankname = parameters.get("bank-name") 
+        print(bankname)
+        print(city)
         lat_s = {'India Bazaar':'43.0718 N','Walter B Allen': '37.3688 W','Ames Construction':'32.7767 N'} 
         lon_s = {'India Bazaar':'70.7626 N','Walter B Allen': '122.0363 W','Ames Construction':'96.7970 W'}   
         earth_s = {'India Bazaar':'0','Walter B Allen': '1593','Ames Construction':'195'}  
@@ -88,7 +90,9 @@ def processRequest(req):
         fire_s = {'India Bazaar':'20','Walter B Allen': '15','Ames Construction':'6'}
         #fico_str = "Property Risk for " + bankname + " is \n" + "Latitude   : " + str(lat_s[bankname]) + "\n"  + "Longitude   : " + str(lon_s[bankname])+ "Roof Age    : " + str(roof_s[bankname])" years " + "Distance of Property from Firestation   : " + str(fico_score[bankname])" mins "+ "Earth Quake Risk  : " + str(earth_s[bankname])" counts in last 15 years" + "Flood Risk  : " + str(fld_s[bankname])+ "Hail  Risk  : " + str(hail_s[bankname]) + "Fire  Risk  : " + str(fire_s[bankname])         
         #fico_str = "Roof Age    : " + str(roof_s[bankname])+ " years " + " Distance of Property from Firestation   : " + str(fico_score[bankname]) + " mins " 
-        fico_str = "Roof Age: " + str(roof_s[bankname])+ " yrs " + " Dist Property FireStation" + str(fico_score[bankname]) + " mins " 
+        print(roof_s[bankname])
+        print(str(fico_score
+        fico_str = "Roof Age: " + str(roof_s[bankname])+ " yrs "+ " Dist Property FireStation" + str(fire_s[bankname]) + " mins " 
                    #"Roof Age    : " + str(roof_s[bankname])+ " years " + " Distance of Property from Firestation   : " + str(fico_score[bankname]) + " mins " 
                    #"Earth Quake Risk  : " + str(earth_s[bankname]) + " counts in last 15 years" + "Flood Risk  : " + str(fld_s[bankname])+ "Snow  Storm  : " + str(hail_s[bankname]) + "Fire  Risk  : " + str(fire_s[bankname])
         bankname = fico_str
@@ -100,6 +104,8 @@ def processRequest(req):
         parameters = result.get("parameters")
         city = parameters.get("geo-city")
         bankname = parameters.get("bank-name") 
+        print(bankname)
+        print(city)
         earth_s = {'India Bazaar':'0','Walter B Allen': '1593','Ames Construction':'195'}  
         hyd_s = {'India Bazaar':'10','Walter B Allen': '22','Ames Construction':'19'}
         fld_s = {'India Bazaar':'2','Walter B Allen': '11','Ames Construction':'94'}  
@@ -107,7 +113,7 @@ def processRequest(req):
         snow_s = {'India Bazaar':'0','Walter B Allen': '15','Ames Construction':'0'}
         fire_s = {'India Bazaar':'20','Walter B Allen': '15','Ames Construction':'6'}
         #fico_str = "Property Risk for " + bankname + " is \n" + "Latitude   : " + str(lat_s[bankname]) + "\n"  + "Longitude   : " + str(lon_s[bankname])+ "Roof Age    : " + str(roof_s[bankname])" years " + "Distance of Property from Firestation   : " + str(fico_score[bankname])" mins "+ "Earth Quake Risk  : " + str(earth_s[bankname])" counts in last 15 years" + "Flood Risk  : " + str(fld_s[bankname])+ "Hail  Risk  : " + str(hail_s[bankname]) + "Fire  Risk  : " + str(fire_s[bankname])         
-        fico_str = "EQ Risk:" + str(earth_s[bankname]) + "Cnt" + "Flood Risk  : " + str(fld_s[bankname])+ "Snow Storm : " + str(hail_s[bankname]) + "Fire Risk: " + str(fire_s[bankname])
+        fico_str = "EQ Risk:" + str(earth_s[bankname]) + "Cnt" + "Flood Risk  : " + str(fld_s[bankname])+ "Fire Risk  : " + str(hyd_s[bankname])
                    #"Roof Age    : " + str(roof_s[bankname])+ " years " + " Distance of Property from Firestation   : " + str(fico_score[bankname]) + " mins " 
                    #"Earth Quake Risk  : " + str(earth_s[bankname]) + " counts in last 15 years" + "Flood Risk  : " + str(fld_s[bankname])+ "Snow  Storm  : " + str(hail_s[bankname]) + "Fire  Risk  : " + str(fire_s[bankname])
         bankname = fico_str
